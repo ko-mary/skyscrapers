@@ -80,9 +80,10 @@ def check_uniqueness_in_rows(board: list):
     >>> check_uniqueness_in_rows(['***21**', '412453*', '423145*', '*553215', '*35214*', '*41532*', '*2*1***'])
     False
     """
-    del board[0]
-    del board[-1]
-    for line in board:
+    new_board = board.copy()
+    del new_board[0]
+    del new_board[-1]
+    for line in new_board:
         line = line[1:-1]
         for check_number, check_element in enumerate(line):
             for number, element in enumerate(line):
@@ -106,9 +107,10 @@ def check_horizontal_visibility(board: list):
     >>> check_horizontal_visibility(['***21**', '452413*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
     False
     """
-    del board[0]
-    del board[-1]
-    for line in board:
+    new_board = board.copy()
+    del new_board[0]
+    del new_board[-1]
+    for line in new_board:
         if line[0] != '*':
             if left_to_right_check(line, int(line[0])) == False:
                 return False
