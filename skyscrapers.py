@@ -153,7 +153,16 @@ def check_skyscrapers(input_path: str):
     >>> check_skyscrapers("check.txt")
     True
     """
-    pass
+    game_board = read_input(input_path)
+    if check_not_finished_board(game_board) == False:
+        return False
+    if check_uniqueness_in_rows(game_board) == False:
+        return False
+    if check_horizontal_visibility(game_board) == False:
+        return False
+    if check_columns(game_board) == False:
+        return False
+    return True
 
 
 if __name__ == "__main__":
