@@ -8,7 +8,7 @@ def read_input(path: str):
     Return list of str.
 
     >>> read_input("check.txt")
-    ['***21**', '452453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***']
+    ['***21**', '412453*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***']
     """
     with open(path, 'r', encoding='utf-8') as file:
         lines = file.readlines()
@@ -34,7 +34,18 @@ def left_to_right_check(input_line: str, pivot: int):
     >>> left_to_right_check("452453*", 5)
     False
     """
-    pass
+    line = input_line[1:-1]
+    number_of_scyscrapers = 0
+    max_element = int(line[0])
+    for element in line:
+        element = int(element)
+        if element >= max_element:
+            number_of_scyscrapers += 1
+            max_element = element
+    if number_of_scyscrapers == pivot:
+        return True
+    else:
+        return False
 
 
 def check_not_finished_board(board: list):
@@ -50,7 +61,7 @@ def check_not_finished_board(board: list):
     >>> check_not_finished_board(['***21**', '412453*', '423145*', '*5?3215', '*35214*', '*41532*', '*2*1***'])
     False
     """
-    pas
+    pass
 
 
 def check_uniqueness_in_rows(board: list):
