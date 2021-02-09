@@ -106,7 +106,17 @@ def check_horizontal_visibility(board: list):
     >>> check_horizontal_visibility(['***21**', '452413*', '423145*', '*543215', '*35214*', '*41532*', '*2*1***'])
     False
     """
-    pass
+    del board[0]
+    del board[-1]
+    for line in board:
+        if line[0] != '*':
+            if left_to_right_check(line, int(line[0])) == False:
+                return False
+        reverse_line = line[::-1]
+        if reverse_line[0] != '*':
+            if left_to_right_check(reverse_line, int(reverse_line[0])) == False:
+                return False
+    return True
 
 
 def check_columns(board: list):
